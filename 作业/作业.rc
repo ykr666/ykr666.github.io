@@ -1,0 +1,274 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Chinese (中国) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 4, 2\r\n"
+    "#pragma code_page(936)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\作业.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""l.chs\\afxres.rc""          // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON    DISCARDABLE     "res\\作业.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG DISCARDABLE  0, 0, 187, 111
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "关于 作业获取器"
+FONT 9, "宋体"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
+    LTEXT           "作业获取器 1.0 ",IDC_STATIC,40,10,73,8,SS_NOPREFIX
+    LTEXT           "版权所有 (C) 阳开蕊 2023",IDC_STATIC,40,25,119,8
+    DEFPUSHBUTTON   "我知道了",IDOK,130,7,50,14,WS_GROUP
+    PUSHBUTTON      "检测更新",IDC_BUTTON1,15,56,86,40
+    LTEXT           "作者也许会持续更新de",IDC_STATIC,14,43,104,10
+    LTEXT           "最新版本：",IDC_STATIC,103,55,57,8
+    LTEXT           "请获取",IDC_ver,107,65,61,10
+    LTEXT           "当前版本：",IDC_STATIC,103,75,57,9
+    LTEXT           "请获取",IDC_thisver,107,87,57,9
+    PUSHBUTTON      "更新",IDC_BUTTON2,128,38,52,15
+END
+
+IDD_MY_DIALOG DIALOGEX 0, 0, 320, 318
+STYLE DS_MODALFRAME | WS_MINIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "作业获取器"
+MENU IDR_MENU1
+FONT 9, "宋体"
+BEGIN
+    PUSHBUTTON      "退出",IDCANCEL,250,7,63,22
+    LTEXT           "这是一个作业获取程序",IDC_STATIC,109,7,106,8
+    EDITTEXT        IDC_EDIT1,7,29,306,282,ES_MULTILINE | ES_AUTOHSCROLL | 
+                    ES_READONLY | WS_VSCROLL
+    PUSHBUTTON      "获取所有作业",IDC_BUTTON1,7,7,59,23
+    PUSHBUTTON      "作者の话",IDC_BUTTON2,118,16,57,13
+END
+
+IDD_ZUOZHEDEHUA_DIALOG DIALOG DISCARDABLE  0, 0, 194, 175
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "作者の话"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "退出",IDOK,46,149,89,19
+    EDITTEXT        IDC_EDIT1,7,7,180,141,ES_MULTILINE | ES_AUTOHSCROLL | 
+                    ES_READONLY
+END
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080404b0"
+        BEGIN
+            VALUE "Comments", "\0"
+            VALUE "CompanyName", "\0"
+            VALUE "FileDescription", "作业获取器\0"
+            VALUE "FileVersion", "1.1.4.5.1.4\0"
+            VALUE "InternalName", "作业获取器\0"
+            VALUE "LegalCopyright", "版权所有 (C) 2023 阳开蕊\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "作业.EXE\0"
+            VALUE "PrivateBuild", "\0"
+            VALUE "ProductName", "作业获取器\0"
+            VALUE "ProductVersion", "1.9.1.9.8.1.0\0"
+            VALUE "SpecialBuild", "\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x804, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 6
+        RIGHTMARGIN, 180
+        VERTGUIDE, 128
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 104
+    END
+
+    IDD_MY_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 313
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 311
+    END
+
+    IDD_ZUOZHEDEHUA_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 187
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 168
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MENU1 MENU DISCARDABLE 
+BEGIN
+    POPUP "作业"
+    BEGIN
+        MENUITEM "作业说明",                    ID_MENUITEM32771
+        MENUITEM "保存作业",                    ID_MENUITEM32772
+    END
+    POPUP "网络"
+    BEGIN
+        MENUITEM "获取作业",                    ID_MENUITEM32773
+        MENUITEM "测试连接",                    ID_MENUITEM32774
+        MENUITEM "检测更新",                    ID_MENUITEM32775
+    END
+    POPUP "关于"
+    BEGIN
+        MENUITEM "关于程序",                    ID_About
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_ABOUTBOX            "关于 作业获取器(&A)..."
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_MENUITEM32771        "az，这是https://ykr666.github.io/zuoye.txt获得的作业。。"
+    ID_MENUITEM32772        "将作业保存在本地"
+    ID_MENUITEM32773        "获取服务器的作业"
+    ID_MENUITEM32774        "测试你的网络连接"
+    ID_MENUITEM32775        "检测程序更新"
+    ID_MENUITEM32776        "查看程序的版本、作者"
+END
+
+#endif    // Chinese (中国) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE 4, 2
+#pragma code_page(936)
+#endif //_WIN32
+#include "res\作业.rc2"  // non-Microsoft Visual C++ edited resources
+#include "l.chs\afxres.rc"          // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
