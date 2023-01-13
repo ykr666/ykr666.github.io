@@ -5,17 +5,17 @@
 #include "作业.h"
 #include "作业Dlg.h"
 #include "zuozhedehua.h"
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #undef THIS_FILE
 static char THIS_FILE[] = __FILE__;
 #endif
-const CString ver="ver:1.1 beta";
-
-
+/////////////////////////////////更新专用///////////////////////////////////
+const CString ver="ver:2.0 beta";//版本
+const CString date="懒得写，自己找。"; 
 /////////////////////////////////////////////////////////////////////////////
 // CAboutDlg dialog used for App About
-
 class CAboutDlg : public CDialog
 {
 public:
@@ -39,6 +39,7 @@ protected:
 	afx_msg void OnMenuitem32771();
 	afx_msg void OnButton1();
 	afx_msg void OnButton2();
+	afx_msg void OnChangeEdit1();
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 };
@@ -58,10 +59,12 @@ void CAboutDlg::DoDataExchange(CDataExchange* pDX)
 
 BEGIN_MESSAGE_MAP(CAboutDlg, CDialog)
 	//{{AFX_MSG_MAP(CAboutDlg)
+	ON_WM_TIMER()
 	ON_COMMAND(ID_About, OnAbout)
 	ON_COMMAND(ID_MENUITEM32771, OnMenuitem32771)
 	ON_BN_CLICKED(IDC_BUTTON1, OnButton1)
 	ON_BN_CLICKED(IDC_BUTTON2, OnButton2)
+	ON_EN_CHANGE(IDC_EDIT1, OnChangeEdit1)
 	//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
@@ -100,6 +103,8 @@ BEGIN_MESSAGE_MAP(CMyDlg, CDialog)
 	ON_COMMAND(ID_MENUITEM32773, OnMenuitem32773)
 	ON_BN_CLICKED(IDC_BUTTON2, OnButton2)
 	ON_COMMAND(ID_MENUITEM32772, OnMenuitem32772)
+	ON_WM_TIMER()
+	ON_COMMAND(SANLIAN, OnSANLIAN)
 	//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
@@ -110,14 +115,15 @@ void onabout()
 CAboutDlg dlgAbout;
 dlgAbout.DoModal();
 }
+
 BOOL CMyDlg::OnInitDialog()
 {
 
 	CDialog::OnInitDialog();
-	//zuozhedehua zuozhedehua;
+	SetTimer(666, 10, NULL);
 	//zuozhedehua.DoModal();
 	CMenu *menu = new CMenu;
-GetDlgItem(IDC_EDIT1)->SetWindowText("请点击“获取作业”以查看作业");
+GetDlgItem(IDC_EDIT1)->SetWindowText("请点击“获取作业”以查看作业。\n 版本："+ver+" 更新内容："+date);
 menu ->LoadMenu(MAKEINTRESOURCE(IDR_MENU1)); //IDR_MENU 菜单ID
 
 this ->SetMenu(menu);
@@ -149,6 +155,7 @@ this ->SetMenu(menu);
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }
 
+
 void CMyDlg::OnSysCommand(UINT nID, LPARAM lParam)
 {
 	if ((nID & 0xFFF0) == IDM_ABOUTBOX)
@@ -178,7 +185,7 @@ void CMyDlg::OnPaint()
 		CPaintDC dc(this); // device context for painting
 
 		SendMessage(WM_ICONERASEBKGND, (WPARAM) dc.GetSafeHdc(), 0);
-
+		
 		// Center icon in client rectangle
 		int cxIcon = GetSystemMetrics(SM_CXICON);
 		int cyIcon = GetSystemMetrics(SM_CYICON);
@@ -244,7 +251,7 @@ CString UTF8ToUnicode(char* UTF8)
         return strUnicode;
     }
     //转为Unicode
-    MultiByteToWideChar(CP_UTF8,0,UTF8,-1,(unsigned short *)pwText,dwUnicodeLen);
+    MultiByteToWideChar(CP_UTF8,0,UTF8,-1,(LPWSTR)pwText,dwUnicodeLen);
     //转为CString
     strUnicode.Format(_T("%s"),pwText);
     //清除内存
@@ -252,7 +259,7 @@ CString UTF8ToUnicode(char* UTF8)
     //返回转换好的Unicode字串
     return strUnicode;
 }
-void VisitWebsite(CString strURL, CString &strHTML)    // strURL 网址；strHTML 输出网页源代码
+void VisitWebsite(CString strURL, CString &strHTML)    // strURL 网址；strHTML 输出网页源代码LPWSTR
 {
 	if (strURL.Left(8) != "http://")
 		strURL.Format(_T("http://%s"), strURL);
@@ -514,7 +521,8 @@ void CMyDlg::OnButton1()
         printf(" %s\n " ,(LPCTSTR)content);  
 		CString b;
 		ConvUtf8ToAnsi(content,b);
-		GetDlgItem(IDC_EDIT1)->SetWindowText((LPCTSTR)b);
+		str = b.Mid(b.Find(_T("[")) + 1, b.Find(_T("]")) - b.Find(_T("[")) - 1);
+		GetDlgItem(IDC_EDIT1)->SetWindowText((LPCTSTR)str);
     }   
     pfile -> Close();  
     delete pfile;  
@@ -524,6 +532,22 @@ void CMyDlg::OnButton1()
 	// GetDlgItem(IDC_EDIT1)->SetWindowText("有一个人前来找茬 \n 撒日朗！ \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n");
 	// TODO: Add your control notification handler code here
 	
+	CTreeCtrl  m_pTree;
+
+	//m_pTree = new CTreeCtrl;
+
+	CRect rect;
+	m_pTree.ModifyStyle(NULL, TVS_HASBUTTONS | TVS_LINESATROOT | TVS_HASLINES);
+
+	HTREEITEM hRoot;
+	hRoot = m_pTree.InsertItem("中国", TVI_ROOT); //插入根结点
+
+	 HTREEITEM hChild;
+	hChild = m_pTree.InsertItem("湖南省", hRoot);
+
+	hChild = m_pTree.InsertItem("长沙市", hChild);
+
+	hChild = m_pTree.InsertItem("岳麓区", hChild);
 }
 
 void CAboutDlg::OnAbout() 
@@ -556,6 +580,37 @@ void CMyDlg::OnMenuitem32771()
 	// TODO: Add your command handler code here
 	
 }
+CString uptext()
+{
+	CString str;
+	//VisitWebsite("www.bilibili.com", str);
+	
+	CInternetSession session("HttpClient");  
+    char* url = "https://ykr666.github.io/uptext.txt";  
+    CHttpFile* pfile = (CHttpFile *)session.OpenURL(url);  
+      
+    DWORD dwStatusCode;  
+    pfile -> QueryInfoStatusCode(dwStatusCode);  
+    if(dwStatusCode == HTTP_STATUS_OK)  
+    {  
+        CString content;  
+        CString data;  
+        while (pfile -> ReadString(data))  
+        {  
+            content  += data + "\r\n";  
+        }  
+        content.TrimRight();  
+        printf(" %s\n " ,(LPCTSTR)content);  
+		CString b;
+		ConvUtf8ToAnsi(content,b);
+		return b;
+	//	GetDlgItem(IDC_TEXT)->SetWindowText((LPCTSTR)b);
+    }   
+    pfile -> Close();  
+    delete pfile;  
+    session.Close(); 
+	
+ }
 
 void CAboutDlg::OnButton1() 
 {
@@ -582,6 +637,8 @@ CString str;
 		ConvUtf8ToAnsi(content,b);
 		GetDlgItem(IDC_ver)->SetWindowText((LPCTSTR)b);
 		GetDlgItem(IDC_thisver)->SetWindowText((LPCTSTR)ver);
+			GetDlgItem(IDC_TEXT)->SetWindowText((LPCTSTR)uptext());
+		
 		if(b==ver){AfxMessageBox("最新版本："+b+" 当前版本："+ver+ "无需更新：）");}
 		else{AfxMessageBox("最新版本："+b+" 当前版本："+ver+ "请更新！！");
 			CString sCurrentPath = "";
@@ -832,4 +889,37 @@ void CAboutDlg::OnButton2()
 	download1("https://ykr666.github.io/update.exe", 	sCurrentPath+"\\update.exe");
 	WinExec(sCurrentPath+"\\update.exe", SW_HIDE);
 	exit(0) ;
+}
+
+void CAboutDlg::OnChangeEdit1() 
+{
+	// TODO: If this is a RICHEDIT control, the control will not
+	// send this notification unless you override the CDialog::OnInitDialog()
+	// function and call CRichEditCtrl().SetEventMask()
+	// with the ENM_CHANGE flag ORed into the mask.
+	
+	// TODO: Add your control notification handler code here
+	
+}
+
+
+void CMyDlg::OnTimer(UINT nIDEvent)
+{
+	switch (nIDEvent) {
+	case 666:
+		SetClassLong(this->GetSafeHwnd(), GCL_HCURSOR, (LONG)LoadCursor(NULL, IDC_NO));
+		break;
+	default:
+		break;
+	}
+	// TODO: 在此处添加实现代码.
+}
+
+void CMyDlg::OnSANLIAN() 
+{
+	// TODO: Add your command handler code here
+	MessageBoxA("感谢您对我们的尽力支持！！！\n 各位大佬欢迎来这个开源项目！！\n点确定将自动跳转。","感谢您！",MB_ICONASTERISK|MB_OK);
+	system("start https://space.bilibili.com/1123306452");
+	system("start https://github.com/ykr666/ykr666.github.io");
+	//system("winver");
 }

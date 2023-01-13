@@ -13,10 +13,10 @@ Class2=CMyDlg
 Class3=CAboutDlg
 
 ResourceCount=5
-Resource1=IDD_ABOUTBOX
+Resource1=IDD_MY_DIALOG
 Resource2=IDR_MAINFRAME
-Resource3=IDD_ZUOZHEDEHUA_DIALOG
-Resource4=IDD_MY_DIALOG
+Resource3=IDD_ABOUTBOX
+Resource4=IDD_ZUOZHEDEHUA_DIALOG
 Class4=zuozhedehua
 Resource5=IDR_MENU1
 
@@ -33,7 +33,7 @@ ImplementationFile=作业Dlg.cpp
 Filter=D
 BaseClass=CDialog
 VirtualFilter=dWC
-LastObject=ID_About
+LastObject=CMyDlg
 
 [CLS:CAboutDlg]
 Type=0
@@ -42,12 +42,12 @@ ImplementationFile=作业Dlg.cpp
 Filter=D
 BaseClass=CDialog
 VirtualFilter=dWC
-LastObject=ID_MENUITEM32775
+LastObject=SANLIAN
 
 [DLG:IDD_ABOUTBOX]
 Type=1
 Class=CAboutDlg
-ControlCount=11
+ControlCount=12
 Control1=IDC_STATIC,static,1342177283
 Control2=IDC_STATIC,static,1342308480
 Control3=IDC_STATIC,static,1342308352
@@ -59,16 +59,19 @@ Control8=IDC_ver,static,1342308352
 Control9=IDC_STATIC,static,1342308352
 Control10=IDC_thisver,static,1342308352
 Control11=IDC_BUTTON2,button,1342242816
+Control12=IDC_TEXT,static,1342308352
 
 [DLG:IDD_MY_DIALOG]
 Type=1
 Class=CMyDlg
-ControlCount=5
+ControlCount=7
 Control1=IDCANCEL,button,1342242816
 Control2=IDC_STATIC,static,1342308352
-Control3=IDC_EDIT1,edit,1352730756
+Control3=IDC_EDIT1,edit,1353779332
 Control4=IDC_BUTTON1,button,1342242816
 Control5=IDC_BUTTON2,button,1342242816
+Control6=IDC_TREE1,SysTreeView32,1351682055
+Control7=IDC_TAB1,SysTabControl32,1342177280
 
 [MNU:IDR_MENU1]
 Type=1
@@ -79,7 +82,8 @@ Command3=ID_MENUITEM32773
 Command4=ID_MENUITEM32774
 Command5=ID_MENUITEM32775
 Command6=ID_About
-CommandCount=6
+Command7=SANLIAN
+CommandCount=7
 
 [DLG:IDD_ZUOZHEDEHUA_DIALOG]
 Type=1

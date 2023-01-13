@@ -27,18 +27,18 @@ LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
 // TEXTINCLUDE
 //
 
-1 TEXTINCLUDE DISCARDABLE 
+1 TEXTINCLUDE MOVEABLE PURE 
 BEGIN
     "resource.h\0"
 END
 
-2 TEXTINCLUDE DISCARDABLE 
+2 TEXTINCLUDE MOVEABLE PURE 
 BEGIN
     "#include ""afxres.h""\r\n"
     "\0"
 END
 
-3 TEXTINCLUDE DISCARDABLE 
+3 TEXTINCLUDE MOVEABLE PURE 
 BEGIN
     "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
     "#define _AFX_NO_OLE_RESOURCES\r\n"
@@ -73,25 +73,26 @@ IDR_MAINFRAME           ICON    DISCARDABLE     "res\\作业.ico"
 // Dialog
 //
 
-IDD_ABOUTBOX DIALOG DISCARDABLE  0, 0, 187, 111
+IDD_ABOUTBOX DIALOGEX 0, 0, 229, 161
 STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "关于 作业获取器"
-FONT 9, "宋体"
+FONT 9, "宋体", 0, 0, 0x1
 BEGIN
     ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
-    LTEXT           "作业获取器 1.0 ",IDC_STATIC,40,10,73,8,SS_NOPREFIX
-    LTEXT           "版权所有 (C) 阳开蕊 2023",IDC_STATIC,40,25,119,8
-    DEFPUSHBUTTON   "我知道了",IDOK,130,7,50,14,WS_GROUP
+    LTEXT           "作业获取器 2.0 Dev",IDC_STATIC,40,10,73,8,SS_NOPREFIX
+    LTEXT           "版权所有 (C) 阳开蕊 2023",IDC_STATIC,40,25,98,8
+    DEFPUSHBUTTON   "我知道了",IDOK,6,127,216,26,WS_GROUP
     PUSHBUTTON      "检测更新",IDC_BUTTON1,15,56,86,40
-    LTEXT           "作者也许会持续更新de",IDC_STATIC,14,43,104,10
+    LTEXT           "作者也许会持续更新de（az）",IDC_STATIC,14,43,104,10
     LTEXT           "最新版本：",IDC_STATIC,103,55,57,8
-    LTEXT           "请获取",IDC_ver,107,65,61,10
+    LTEXT           "请获取",IDC_ver,128,65,94,10
     LTEXT           "当前版本：",IDC_STATIC,103,75,57,9
-    LTEXT           "请获取",IDC_thisver,107,87,57,9
-    PUSHBUTTON      "更新",IDC_BUTTON2,128,38,52,15
+    LTEXT           "请获取",IDC_thisver,128,87,94,9
+    PUSHBUTTON      "更新",IDC_BUTTON2,6,95,216,30
+    LTEXT           "更新内容",IDC_TEXT,139,7,83,47
 END
 
-IDD_MY_DIALOG DIALOGEX 0, 0, 320, 318
+IDD_MY_DIALOG DIALOGEX 0, 0, 321, 318
 STYLE DS_MODALFRAME | WS_MINIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | 
     WS_SYSMENU
 EXSTYLE WS_EX_APPWINDOW
@@ -99,12 +100,16 @@ CAPTION "作业获取器"
 MENU IDR_MENU1
 FONT 9, "宋体"
 BEGIN
-    PUSHBUTTON      "退出",IDCANCEL,250,7,63,22
+    PUSHBUTTON      "退出",IDCANCEL,251,7,63,22
     LTEXT           "这是一个作业获取程序",IDC_STATIC,109,7,106,8
-    EDITTEXT        IDC_EDIT1,7,29,306,282,ES_MULTILINE | ES_AUTOHSCROLL | 
-                    ES_READONLY | WS_VSCROLL
+    EDITTEXT        IDC_EDIT1,109,32,205,176,ES_MULTILINE | ES_AUTOHSCROLL | 
+                    ES_READONLY | WS_VSCROLL | WS_HSCROLL
     PUSHBUTTON      "获取所有作业",IDC_BUTTON1,7,7,59,23
     PUSHBUTTON      "作者の话",IDC_BUTTON2,118,16,57,13
+    CONTROL         "Tree1",IDC_TREE1,"SysTreeView32",TVS_HASBUTTONS | 
+                    TVS_HASLINES | TVS_LINESATROOT | TVS_INFOTIP | WS_BORDER | 
+                    WS_HSCROLL | WS_TABSTOP,7,32,101,176
+    CONTROL         "Tab1",IDC_TAB1,"SysTabControl32",0x0,7,208,307,103
 END
 
 IDD_ZUOZHEDEHUA_DIALOG DIALOG DISCARDABLE  0, 0, 194, 175
@@ -170,21 +175,21 @@ END
 //
 
 #ifdef APSTUDIO_INVOKED
-GUIDELINES DESIGNINFO DISCARDABLE 
+GUIDELINES DESIGNINFO MOVEABLE PURE 
 BEGIN
     IDD_ABOUTBOX, DIALOG
     BEGIN
         LEFTMARGIN, 6
-        RIGHTMARGIN, 180
+        RIGHTMARGIN, 222
         VERTGUIDE, 128
         TOPMARGIN, 7
-        BOTTOMMARGIN, 104
+        BOTTOMMARGIN, 154
     END
 
     IDD_MY_DIALOG, DIALOG
     BEGIN
         LEFTMARGIN, 7
-        RIGHTMARGIN, 313
+        RIGHTMARGIN, 314
         TOPMARGIN, 7
         BOTTOMMARGIN, 311
     END
@@ -222,8 +227,35 @@ BEGIN
     BEGIN
         MENUITEM "关于程序",                    ID_About
     END
+    POPUP "拯救作者"
+    BEGIN
+        MENUITEM "给他三连！！！",              SANLIAN
+    END
 END
 
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_ABOUTBOX AFX_DIALOG_LAYOUT MOVEABLE PURE 
+BEGIN
+    0x0000
+END
+
+IDD_MY_DIALOG AFX_DIALOG_LAYOUT MOVEABLE PURE 
+BEGIN
+    0x0000
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Cursor
+//
+
+IDC_NODROP              CURSOR  DISCARDABLE     "NODROP.cur"
 
 /////////////////////////////////////////////////////////////////////////////
 //

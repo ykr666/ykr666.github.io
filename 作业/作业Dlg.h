@@ -48,8 +48,12 @@ protected:
 	afx_msg void OnMenuitem32773();
 	afx_msg void OnButton2();
 	afx_msg void OnMenuitem32772();
+	afx_msg void OnTimer(UINT nIDEvent);
+	afx_msg void OnSANLIAN();
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
+public:
+//	void OnTimer();
 };
 
 //{{AFX_INSERT_LOCATION}}

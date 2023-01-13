@@ -37,8 +37,9 @@ protected:
 	//{{AFX_MSG(zuozhedehua)
 	virtual void OnOK();
 	afx_msg void OnChangeEdit1();
-	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
+	//}}AFX_MSG
+	
 };
 
 //{{AFX_INSERT_LOCATION}}
