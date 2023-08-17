@@ -1,6 +1,6 @@
 # ykr666.github.io
 ## 这是一个一个获取更新和文件服务器啊啊啊，其中还有源码。
-> 其中的"update"和"Main"文件夹是这个项目的源代码。
+> 在“源码.7z”中的"update"和"Main"文件夹是这个项目的源代码。
 ### 另一个GitHub账号：yangkairuei
 预计可以在win7+系统运行
 bilibili：@阳开蕊，希望关注投币。
